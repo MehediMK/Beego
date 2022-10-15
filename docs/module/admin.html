@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html>
+	
+<!-- Mirrored from beego.vip/docs/module/admin.md by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 27 Apr 2022 04:29:27 GMT -->
+<!-- Added by HTTrack -->
+<!-- Mirrored from beego.w3engineers.com/beego.vip/docs/module/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Oct 2022 03:29:55 GMT -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+		<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="author" content="slene, Unknown" />
+
+<title>Admin module - beego: simple &amp; powerful Go app framework</title>
+
+<link rel="shortcut icon" href="../../static/img/favicon.png" />
+
+
+<script>/* Beego Compress Powered */</script>
+	<link rel="stylesheet" href="../../static/css/lib.mine67fe67f.css?ver=1650787190" />
+
+<!--[if IE 7]>
+<script>/* Beego Compress Powered */</script>
+	<link rel="stylesheet" href="/static/css/ie7.min.css?ver=1650787190" />
+
+<![endif]-->
+<script>/* Beego Compress Powered */</script>
+	<link rel="stylesheet" href="../../static/css/app.mine67fe67f.css?ver=1650787190" />
+
+
+<!--[if lt IE 9]>
+	<script>/* Beego Compress Powered */</script>
+	<script type="text/javascript" src="/static/js/ie9.min.js?ver=1650787190"></script>
+
+<![endif]-->
+		
+	</head>
+	<body id="front">
+		<noscript>Please enable JavaScript in your browser!</noscript>
+		<div id="wrapper">
+			<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container" data-toggle="clingify">
+        <div class="row">
+            <div class="navbar-header">
+                
+                <span class="visible-xs">
+                    <a id="docs-collapse-btn" class="navbar-btn" data-toggle="jpanel-menu" data-target="#docs-collapse">
+                        <span class="sr-only">Toggle docs menu</span>
+                        <i class="icon icon-angle-right"></i>
+                    </a>
+                </span>
+                
+                <a type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="hidden-xs logo" href="../../index.html">
+                    <img style="height:32px;width:102px;" src="../../static/img/beego_purple.png">
+                </a>
+                <div class="visible-xs text-center">
+                    <a class="navbar-brand" href="../../index.html">
+                        Beego
+                    </a>
+                    
+                    <span class="nav-github">
+                        <span rel="show-github" data-user="astaxie" data-repo="beego"></span>
+                    </span>
+                    
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" role="navigation" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ><a href="../../index.html">Home</a></li>
+                    <li ><a href="../../quickstart.html">Getting started</a></li>
+                    <li ><a href="../../community.html">Community</a></li>
+                    <li class="active"><a href="../intro/index.html">Documentation</a></li>
+                    <li ><a href="../../video.html">Video</a></li>
+                    <li ><a href="../../products.html">Products</a></li>
+                    <li ><a href="../../blog.html">Blog</a></li>
+                </ul>
+                <div class="hidden-sm hidden-xs nav-lang pull-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-xs btn-default btn-md dropdown-toggle" data-toggle="dropdown">Language:English <i class="caret"></i></button>
+                        <ul class="dropdown-menu">
+                            
+                                <li><a href="javascript::" data-lang="zh-CN" class="lang-changed">简体中文</a></li>
+                            
+                                <li><a href="javascript::" data-lang="ru-RU" class="lang-changed">Russian</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="hidden-sm hidden-xs nav-github pull-right">
+                    <span rel="show-github" data-user="beego" data-repo="beego"></span>
+                    <span rel="show-github" data-user="beego" data-repo="beego" data-type="fork"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+			<div id="main">
+				
+<div class="container main-container">
+    <div class="row">
+        <div class="col-md-2 col-sm-3">
+            <div id="docs-collapse" class="collapse navbar-collapse docs-sidenav">
+                
+                    
+                    
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../intro/index.html">Beego introduction</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../intro/contributing.html">Contributing</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../intro/releases.html">Release Notes</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../intro/upgrade.html">Upgrade Beego</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../install/index.html">Install / Upgrade</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../install/bee.html">bee tool usage</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../quickstart/index.html">Quickstart</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../quickstart/new.html">Create a new project</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../quickstart/router.html">Routing settings</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../quickstart/controller.html">Controller</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../quickstart/model.html">Models</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../quickstart/view.html">View</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../quickstart/static.html">Static files</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../mvc/index.html">MVC Introduction</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                Controllers
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/config.html">Configuration</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/router.html">Routing</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/controller.html">Controller funcs</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/params.html">Request parameters</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/xsrf.html">XSRF filtering</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/filter.html">Filters</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/session.html">Session control</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/flash.html">Flash messages</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/urlbuilding.html">URL Building</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/jsonxml.html">Response formats</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/validation.html">Form validation</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/errors.html">Error Handling</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/controller/logs.html">Logging</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                Models
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/overview.html">Overview</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/orm.html">ORM Usage</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/object.html">CRUD Operations</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/query.html">Advanced Queries</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/rawsql.html">Raw SQL to query</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/querybuilder.html">Query Builder</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/transaction.html">Transaction</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/models.html">Model Definition</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/cmd.html">Command Line</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/test.html">Test Cases</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/custom_fields.html">Custom Fields</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/model/faq.html">FAQ</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                Views
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/view/view.html">Template Parsing</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/view/template.html">Template Functions</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/view/static.html">Static files</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/view/page.html">Pagination</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../mvc/view/global_variables.html">Global Variables</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="index.html">Modules</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="session.html">Session Module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="cache.html">Cache Module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="logs.html">Logs Module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="httplib.html">Httplib Module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="context.html">Context Module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="toolbox.html">toolbox</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="task.html">Task Module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class="active item" href="admin.html">Admin module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="config.html">Config Module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="governor.html">Governor module</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="i18n.html">i18n Module</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../advantage/index.html">Advanced Beego</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../advantage/monitor.html">Live Monitor</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../advantage/docs.html">Automated API Documentation</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../contributed/index.html">Middleware contribution</a>
+                            
+                            </div>
+                            
+    
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../deploy/index.html">Deployment</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../deploy/beego.html">Stand alone Deployment</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../deploy/supervisor.html">Deployment with Supervisord</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../deploy/systemctl.html">Deployment with Systemctl</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../deploy/nginx.html">Deployment with nginx</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../deploy/apache.html">Deployment with Apache</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../examples/index.html">Demos</a>
+                            
+                            </div>
+                            
+    
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../examples/chat.html">Chat Room</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../examples/shorturl.html">URL Shortener</a></li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li><a class=" item" href="../examples/todo.html">To-do List</a></li>
+                    
+                
+            </ul>
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+            <ul class="list-unstyled">
+                
+                    
+                        <li class="group">
+                            <div class="section">
+                            
+                                <a class=" item" href="../faq/index.html">FAQ</a>
+                            
+                            </div>
+                            
+    
+        
+    
+
+                        </li>
+                    
+                
+            </ul>
+        
+    
+
+                
+            </div>
+        </div>
+        <div class="col-md-10 col-sm-9">
+            <div class="box">
+				<div>
+					<script>
+					  (function() {
+					    var cx = '014389342508982455625:2tomkdt5uo4';
+					    var gcse = document.createElement('script');
+					    gcse.type = 'text/javascript';
+					    gcse.async = true;
+					    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+					        '//www.google.com/cse/cse.js?cx=' + cx;
+					    var s = document.getElementsByTagName('script')[0];
+					    s.parentNode.insertBefore(gcse, s);
+					  })();
+					</script>
+					<gcse:search></gcse:search>
+				</div>
+                <div class="cell slim page-box">
+                    <p>
+                        <a href="https://github.com/beego/beedoc/blob/master/en-US/module/admin.md" class="pull-right btn btn-info" target="_blank">Improve this page on GitHub</a>
+                        <span class="clearfix"></span>
+                    </p>
+                    <div class="markdown docs-markdown">
+                        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta name="GENERATOR" content="Blackfriday Markdown Processor v1.1" />
+  <meta charset="utf-8" />
+</head>
+<body>
+
+<p>This module is based on the <a href="https://github.com/dropwizard/dropwizard">Dropwizard framework</a> for Java. One user told me about this framework and it&rsquo;s cool stuff. <a href="https://github.com/beego/beego/issues/128">Issue 128</a> talked about this feature. I added more cool features. Here are the features: healthcheck, profiling, statistics and tasks.</p>
+
+<p>In v2.x, we plit <code>toolbox</code> into two pars, <code>admin</code> and <code>task</code>.</p>
+
+<h2>How to install</h2>
+
+<pre><code>go get github.com/beego/beego/v2/core/admin
+</code></pre>
+
+<h2>Healthcheck</h2>
+
+<p>It can check the health status of your application. E.g.: To check if database is available:</p>
+
+<pre lang="go"><code>type DatabaseCheck struct {
+}
+
+func (dc *DatabaseCheck) Check() error {
+    if dc.isConnected() {
+        return nil
+    } else {
+        return errors.New(&quot;can't connect database&quot;)
+    }
+}
+</code></pre>
+
+<p>Then you can add it as a check item:</p>
+
+<pre lang="go"><code>admin.AddHealthCheck(&quot;database&quot;,&amp;DatabaseCheck{})
+</code></pre>
+
+<p>After this you can send get request to <code>/healthcheck</code>:</p>
+
+<pre><code>$ curl http://beego.vip:8088/healthcheck
+* deadlocks: OK
+* database: OK
+</code></pre>
+
+<p>It will return the database status accordingly.</p>
+
+<h2>Profiling</h2>
+
+<p>Monitoring the performance of running processes is a very good way to optimize performance and to look for issues in our application. E.g.: information of GC and goroutine.</p>
+
+<p>Profile provides a easy entry point for you to debug the application. It uses the <code>ProcessInput</code> entry function to process the requests. Here are some debugging types:</p>
+
+<ul>
+<li><p>lookup goroutine</p>
+
+<p>Print out the tasks of all goroutines which are currently running. You can easily see what all goroutines are doing.</p>
+
+<pre><code>goroutine 3 [running]:
+runtime/pprof.writeGoroutineStacks(0x634238, 0xc210000008, 0x62b000, 0xd200000000000000)
+    /Users/astaxie/go/src/pkg/runtime/pprof/pprof.go:511 +0x7c
+runtime/pprof.writeGoroutine(0x634238, 0xc210000008, 0x2, 0xd2676410957b30fd, 0xae98)
+    /Users/astaxie/go/src/pkg/runtime/pprof/pprof.go:500 +0x3c
+runtime/pprof.(*Profile).WriteTo(0x52ebe0, 0x634238, 0xc210000008, 0x2, 0x1, ...)
+    /Users/astaxie/go/src/pkg/runtime/pprof/pprof.go:229 +0xb4
+_/Users/astaxie/github/beego/toolbox.ProcessInput(0x2c89f0, 0x10, 0x634238, 0xc210000008)
+    /Users/astaxie/github/beego/toolbox/profile.go:26 +0x256
+_/Users/astaxie/github/beego/toolbox.TestProcessInput(0xc21004e090)
+    /Users/astaxie/github/beego/toolbox/profile_test.go:9 +0x5a
+testing.tRunner(0xc21004e090, 0x532320)
+    /Users/astaxie/go/src/pkg/testing/testing.go:391 +0x8b
+created by testing.RunTests
+    /Users/astaxie/go/src/pkg/testing/testing.go:471 +0x8b2
+
+
+goroutine 1 [chan receive]:
+testing.RunTests(0x315668, 0x532320, 0x4, 0x4, 0x1)
+    /Users/astaxie/go/src/pkg/testing/testing.go:472 +0x8d5
+testing.Main(0x315668, 0x532320, 0x4, 0x4, 0x537700, ...)
+    /Users/astaxie/go/src/pkg/testing/testing.go:403 +0x84
+main.main()
+    _/Users/astaxie/github/beego/toolbox/_test/_testmain.go:53 +0x9c
+</code></pre></li>
+
+<li><p>lookup heap</p>
+
+<p>Print out information of current heap:</p>
+
+<pre><code>heap profile: 1: 288 [2: 296] @ heap/1048576
+1: 288 [2: 296] @
+
+
+# runtime.MemStats
+# Alloc = 275504
+# TotalAlloc = 275512
+# Sys = 4069608
+# Lookups = 5
+# Mallocs = 469
+# Frees = 1
+# HeapAlloc = 275504
+# HeapSys = 1048576
+# HeapIdle = 647168
+# HeapInuse = 401408
+# HeapReleased = 0
+# HeapObjects = 468
+# Stack = 24576 / 131072
+# MSpan = 4472 / 16384
+# MCache = 1504 / 16384
+# BuckHashSys = 1476472
+# NextGC = 342976
+# PauseNs = [370712 77378 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+# NumGC = 2
+# EnableGC = true
+# DebugGC = false
+</code></pre></li>
+
+<li><p>lookup threadcreate</p>
+
+<p>Print out information of threads:</p>
+
+<pre><code>threadcreate profile: total 4
+1 @ 0x17f68 0x183c7 0x186a8 0x188cc 0x19ca9 0xcf41 0x139a3 0x196c0
+#   0x183c7 newm+0x27           /Users/astaxie/go/src/pkg/runtime/proc.c:896
+#   0x186a8 startm+0xb8         /Users/astaxie/go/src/pkg/runtime/proc.c:974
+#   0x188cc handoffp+0x1ac          /Users/astaxie/go/src/pkg/runtime/proc.c:992
+#   0x19ca9 runtime.entersyscallblock+0x129 /Users/astaxie/go/src/pkg/runtime/proc.c:1514
+#   0xcf41  runtime.notetsleepg+0x71    /Users/astaxie/go/src/pkg/runtime/lock_sema.c:253
+#   0x139a3 runtime.MHeap_Scavenger+0xa3    /Users/astaxie/go/src/pkg/runtime/mheap.c:463
+
+
+1 @ 0x17f68 0x183c7 0x186a8 0x188cc 0x189c3 0x1969b 0x2618b
+#   0x183c7 newm+0x27       /Users/astaxie/go/src/pkg/runtime/proc.c:896
+#   0x186a8 startm+0xb8     /Users/astaxie/go/src/pkg/runtime/proc.c:974
+#   0x188cc handoffp+0x1ac      /Users/astaxie/go/src/pkg/runtime/proc.c:992
+#   0x189c3 stoplockedm+0x83    /Users/astaxie/go/src/pkg/runtime/proc.c:1049
+#   0x1969b runtime.gosched0+0x8b   /Users/astaxie/go/src/pkg/runtime/proc.c:1382
+#   0x2618b runtime.mcall+0x4b  /Users/astaxie/go/src/pkg/runtime/asm_amd64.s:178
+
+
+1 @ 0x17f68 0x183c7 0x170bc 0x196c0
+#   0x183c7 newm+0x27       /Users/astaxie/go/src/pkg/runtime/proc.c:896
+#   0x170bc runtime.main+0x3c   /Users/astaxie/go/src/pkg/runtime/proc.c:191
+
+
+1 @
+</code></pre></li>
+
+<li><p>lookup block</p>
+
+<p>Print out information of block:</p>
+
+<pre><code>--- contention:
+cycles/second=2294781025
+</code></pre></li>
+
+<li><p>start cpuprof</p>
+
+<p>Start recording cpuprof info into created file cpu-pid.pprof.</p></li>
+
+<li><p>stop cpuprof</p>
+
+<p>Stop recording.</p></li>
+
+<li><p>get memprof</p>
+
+<p>Start recording memprof into created file mem-pid.memprof</p></li>
+
+<li><p>gc summary</p>
+
+<p>Check GC status:</p>
+
+<pre><code>NumGC:2 Pause:54.54us Pause(Avg):170.82us Overhead:177.49% Alloc:248.97K Sys:3.88M Alloc(Rate):1.23G/s Histogram:287.09us 287.09us 287.09us 
+</code></pre></li>
+</ul>
+
+<h2>Statistics</h2>
+
+<p>Look at this picture, what do you think? It&rsquo;s cool, right? admin module supports it.</p>
+
+<p><img src="../images/toolbox.jpg" alt="" />
+</p>
+
+<p>How can I use the statistics? Add statistics like this:</p>
+
+<pre><code>admin.StatisticsMap.AddStatistics(&quot;POST&quot;, &quot;/api/user&quot;, &quot;&amp;admin.user&quot;, time.Duration(2000))
+admin.StatisticsMap.AddStatistics(&quot;POST&quot;, &quot;/api/user&quot;, &quot;&amp;admin.user&quot;, time.Duration(120000))
+admin.StatisticsMap.AddStatistics(&quot;GET&quot;, &quot;/api/user&quot;, &quot;&amp;admin.user&quot;, time.Duration(13000))
+admin.StatisticsMap.AddStatistics(&quot;POST&quot;, &quot;/api/admin&quot;, &quot;&amp;admin.user&quot;, time.Duration(14000))
+admin.StatisticsMap.AddStatistics(&quot;POST&quot;, &quot;/api/user/astaxie&quot;, &quot;&amp;admin.user&quot;, time.Duration(12000))
+admin.StatisticsMap.AddStatistics(&quot;POST&quot;, &quot;/api/user/xiemengjun&quot;, &quot;&amp;admin.user&quot;, time.Duration(13000))
+admin.StatisticsMap.AddStatistics(&quot;DELETE&quot;, &quot;/api/user&quot;, &quot;&amp;admin.user&quot;, time.Duration(1400))
+</code></pre>
+
+<p>Get statistics information:</p>
+
+<pre><code>admin.StatisticsMap.GetMap(os.Stdout)   
+</code></pre>
+
+<p>Here is the output:</p>
+
+<pre><code>| requestUrl                                        | method     | times            | used             | max used         | min used         | avg used         |
+| /api/user                                         | POST       |  2               | 122.00us         | 120.00us         | 2.00us           | 61.00us          |
+| /api/user                                         | GET        |  1               | 13.00us          | 13.00us          | 13.00us          | 13.00us          |
+| /api/user                                         | DELETE     |  1               | 1.40us           | 1.40us           | 1.40us           | 1.40us           |
+| /api/admin                                        | POST       |  1               | 14.00us          | 14.00us          | 14.00us          | 14.00us          |
+| /api/user/astaxie                                 | POST       |  1               | 12.00us          | 12.00us          | 12.00us          | 12.00us          |
+| /api/user/xiemengjun                              | POST       |  1               | 13.00us          | 13.00us          | 13.00us          | 13.00us          |   
+</code></pre>
+
+</body>
+
+<!-- Mirrored from beego.vip/docs/module/admin.md by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 27 Apr 2022 04:29:30 GMT -->
+
+<!-- Mirrored from beego.w3engineers.com/beego.vip/docs/module/admin.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Oct 2022 03:29:56 GMT -->
+</html>
+
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                var disqus_url = 'http://beego.me/docs/' + 'module\/admin.md?lang=en-US';
+            </script>
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+     
+    var disqus_shortname = 'beego'; 
+
+     
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+    </div>
+</div>
+
+		    </div>
+		    <div class="wrapper-push"></div>
+		</div>
+		<footer id="footer">
+    <div class="container">
+        <div class="row footer-wrap">
+            <div class="col-md-12 desc">
+                <div class="pull-right">
+                    <div class="btn-group dropup">
+                        <button type="button" class="btn btn-default btn-md dropdown-toggle" data-toggle="dropdown">Language:English <i class="caret"></i></button>
+                        <ul class="dropdown-menu">
+                            
+                                <li><a href="javascript::" data-lang="zh-CN" class="lang-changed">简体中文</a></li>
+                            
+                                <li><a href="javascript::" data-lang="ru-RU" class="lang-changed">Russian</a></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    
+                        <a class="btn btn-success" href="../../donate.html"><i class="icon-dollar"></i> Donate Us</a>
+                    
+                </div>
+                
+                <p>
+                    <a href="../../about.html"><strong>About</strong></a>
+                    |
+                    <a href="../../team.html"><strong>Team</strong></a>
+                    |
+                    <a target="_blank" href="https://github.com/astaxie/beego" target="_blank"><strong><i class="icon-github-sign"></i> Github</strong></a>
+                    - 1ms.
+                </p>
+
+                <p>
+                    Copyright © 2012-2022 Beego Under the <a href="http://www.apache.org/licenses/LICENSE-2.0.html">apache 2.0 licence</a>. Logo designed by <a target="_blank" href="http://mdong.org/">Tengfei</a>.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-39123845-1', 'beego.html');
+  ga('send', 'pageview');
+
+</script>
+
+<script>/* Beego Compress Powered */</script>
+	<script type="text/javascript" src="../../static/js/lib.mine67fe67f.js?ver=1650787190"></script>
+
+<script>/* Beego Compress Powered */</script>
+	<script type="text/javascript" src="../../static/js/app.mine67fe67f.js?ver=1650787190"></script>
+
+
+	</body>
+</html>
+
+
+
